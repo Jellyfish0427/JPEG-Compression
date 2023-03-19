@@ -352,5 +352,8 @@ for(i=1;i<15;i++){
     printf("%3d ", data_RLE[0][0].Y_value[i]);
 }
 ```
-![image](https://user-images.githubusercontent.com/128220508/226195974-662de43a-75b2-410c-a129-7d524480bebb.png)
+![image](https://user-images.githubusercontent.com/128220508/226196263-e6e89bf0-65c4-437f-9a81-ea2b1f267a45.png)
+
+### 8. Huffman
+Trying :(
 
