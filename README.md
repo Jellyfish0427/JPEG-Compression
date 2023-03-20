@@ -24,6 +24,7 @@ void read_header(FILE *fp, Bitmap *x){
 	fread(&x->usedcolors, sizeof(x->usedcolors), 1, fp);
 	fread(&x->importantcolors, sizeof(x->importantcolors), 1, fp);
 }
+```
 Read data : B -> G -> R
 ```js
 void read_data(FILE *fp, ImgRGB **array, int H, int W, int skip){
