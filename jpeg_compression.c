@@ -11,7 +11,7 @@ int r=0,c=0,s;
 
 float sum_Y,sum_Cb,sum_Cr;
 
-//«G«×¶q¤Æªí
+//äº®åº¦é‡åŒ–è¡¨
 int Q_Y[64]={
     16, 11, 10, 16, 24, 40, 51, 61,
     12, 12, 14, 19, 26, 58, 60, 55,
@@ -22,7 +22,7 @@ int Q_Y[64]={
     49, 64, 78, 87,103,121,120,101,
     72, 92, 95, 98,112,100,103, 99 };
 
-//¦â«×¶q¤Æªí
+//è‰²åº¦é‡åŒ–è¡¨
 int Q_CbCr[64]={
     17, 18, 24, 47, 99, 99, 99, 99,
     18, 21, 26, 66, 99, 99, 99, 99,
@@ -48,24 +48,24 @@ int z[64]={
 typedef struct Bmpheader {
 	//Bitmap File Header
 	char identifier[2]; //'BM'
-	unsigned int filesize; //ÂI°}¹ÏÀÉ¤j¤p(byte)
-	unsigned short reserved; //«O¯dÄæ¦ì
+	unsigned int filesize; //é»é™£åœ–æª”å¤§å°(byte)
+	unsigned short reserved; //ä¿ç•™æ¬„ä½
 	unsigned short reserved2;
-	unsigned int bitmap_dataoffset; //¸ê®Æ¶}©l«eªº°¾²¾¶q
+	unsigned int bitmap_dataoffset; //è³‡æ–™é–‹å§‹å‰çš„åç§»é‡
 	//Bitmap Info Header
-	unsigned int bitmap_headersize; //Bitmap Info Headerªºªø«×
-	unsigned int width; //¼e«×(pixel)
-	unsigned int height; //°ª«×(pixel)
-	unsigned short planes; //¦ì¤¸¹Ï¼h¼Æ
+	unsigned int bitmap_headersize; //Bitmap Info Headerçš„é•·åº¦
+	unsigned int width; //å¯¬åº¦(pixel)
+	unsigned int height; //é«˜åº¦(pixel)
+	unsigned short planes; //ä½å…ƒåœ–å±¤æ•¸
 	unsigned short bits_perpixel; //
-	unsigned int compression; //À£ÁY¤è¦¡
-	unsigned int bitmap_datasize; //ÂI°}¹Ï¸ê®Æªº¤j¤p(byte)
-	unsigned int hresolution; //¤ô¥­¸ÑªR«×
-	unsigned int vresolution; //««ª½¸ÑªR«×
-	unsigned int usedcolors; //¨Ï¥Îªº½Õ¦â½LÃC¦â¼Æ
-	unsigned int importantcolors; //­«­nªºÃC¦â¼Æ
+	unsigned int compression; //å£“ç¸®æ–¹å¼
+	unsigned int bitmap_datasize; //é»é™£åœ–è³‡æ–™çš„å¤§å°(byte)
+	unsigned int hresolution; //æ°´å¹³è§£æåº¦
+	unsigned int vresolution; //å‚ç›´è§£æåº¦
+	unsigned int usedcolors; //ä½¿ç”¨çš„èª¿è‰²ç›¤é¡è‰²æ•¸
+	unsigned int importantcolors; //é‡è¦çš„é¡è‰²æ•¸
 	//Pallette
-	unsigned int palette; //½Õ¦â½L¸ê®Æ
+	unsigned int palette; //èª¿è‰²ç›¤è³‡æ–™
 }Bitmap;
 
 /*construct a structure of RGB*/
@@ -120,7 +120,7 @@ typedef struct HUFF{
 }ImgHUFF;
 
 
-/*ImgRGB ªº 2*2 array ªº malloc*/
+/*ImgRGB çš„ 2*2 array çš„ malloc*/
 ImgRGB** malloc_2D_ImgRGB(int x, int y){
     ImgRGB **array, *data;
     array = (ImgRGB**)malloc(x*sizeof(ImgRGB *));
@@ -131,7 +131,7 @@ ImgRGB** malloc_2D_ImgRGB(int x, int y){
     return array;
 }
 
-/*ImgYCbCr ªº 2*2 array ªº malloc*/
+/*ImgYCbCr çš„ 2*2 array çš„ malloc*/
 ImgYCbCr** malloc_2D_ImgYCbCr(int x, int y){
     ImgYCbCr **array, *data;
     array = (ImgYCbCr**)malloc(x*sizeof(ImgYCbCr *));
@@ -142,7 +142,7 @@ ImgYCbCr** malloc_2D_ImgYCbCr(int x, int y){
     return array;
 }
 
-/*ImgDCT ªº 2*2 array ªº malloc*/
+/*ImgDCT çš„ 2*2 array çš„ malloc*/
 ImgDCT** malloc_2D_ImgDCT(int x, int y){
     ImgDCT **array, *data;
     array = (ImgDCT**)malloc(x*sizeof(ImgDCT *));
@@ -153,7 +153,7 @@ ImgDCT** malloc_2D_ImgDCT(int x, int y){
     return array;
 }
 
-/*ImgQUAN ªº 2*2 array ªº malloc*/
+/*ImgQUAN çš„ 2*2 array çš„ malloc*/
 ImgQUAN** malloc_2D_ImgQUAN(int x, int y){
     ImgQUAN **array, *data;
     array = (ImgQUAN**)malloc(x*sizeof(ImgQUAN *));
@@ -164,7 +164,7 @@ ImgQUAN** malloc_2D_ImgQUAN(int x, int y){
     return array;
 }
 
-/*ImgZigZag ªº 2*2 array ªº malloc*/
+/*ImgZigZag çš„ 2*2 array çš„ malloc*/
 ImgZigZag** malloc_2D_ImgZigZag(int x, int y){
     ImgZigZag **array, *data;
     array = (ImgZigZag**)malloc(x*sizeof(ImgZigZag *));
@@ -175,7 +175,7 @@ ImgZigZag** malloc_2D_ImgZigZag(int x, int y){
     return array;
 }
 
-/*ImgRLE ªº 2*2 array ªº malloc*/
+/*ImgRLE çš„ 2*2 array çš„ malloc*/
 ImgRLE** malloc_2D_ImgRLE(int x, int y){
     ImgRLE **array, *data;
     array = (ImgRLE**)malloc(x*sizeof(ImgRLE *));
@@ -187,9 +187,9 @@ ImgRLE** malloc_2D_ImgRLE(int x, int y){
 }
 
 
-//«G«×DC®t­Èªí
+//äº®åº¦DCå·®å€¼è¡¨
 static ImgHUFF huffman_Y_DC[12] = {
-    //length, code word, code word(string)  // category(®t­È¦ì¼Æ)
+    //length, code word, code word(string)  // category(å·®å€¼ä½æ•¸)
 	{ 2, 0x0000 , "00"},					//  0
 	{ 3, 0x0002 , "010"},					//  1
 	{ 3, 0x0003 , "011"},					//  2
@@ -204,7 +204,7 @@ static ImgHUFF huffman_Y_DC[12] = {
 	{ 9, 0x01fe , "111111110"}				//  11
 };
 
-//¦â«×DC®t­Èªí
+//è‰²åº¦DCå·®å€¼è¡¨
 static ImgHUFF huffman_C_DC[12] = {
     //length, code word, code word(string)  // category
 	{ 2, 0x0000 , "00"},					//  0
@@ -221,7 +221,7 @@ static ImgHUFF huffman_C_DC[12] = {
 	{ 11, 0x07fe, "11111111110" }			//  11
 };
 
-//«G«×ACªí
+//äº®åº¦ACè¡¨
 static ImgHUFF huffman_Y_AC[256] = {
     //length, code word, code word(string)
 	{ 4, 0x000a , "1010"},
@@ -388,7 +388,7 @@ static ImgHUFF huffman_Y_AC[256] = {
 	{ 16, 0xfffe,  "1111111111111110"},
 };
 
-//¦â«×ACªí
+//è‰²åº¦ACè¡¨
 static ImgHUFF huffman_C_AC[256] = {
 //  { code length, code word, code word(binary)}
 	{ 2, 0x0000 , "00"},
@@ -596,7 +596,7 @@ void write_header(FILE *outfile, Bitmap *bmpheader){
 }
 
 /*read data*/
-//¼g¶i RGB structure
+//å¯«é€² RGB structure
 void read_data(FILE *fp, ImgRGB **array, int H, int W, int skip){
     printf("\nread data...\n");
 	int temp;
@@ -616,7 +616,7 @@ void read_data(FILE *fp, ImgRGB **array, int H, int W, int skip){
 }
 
 /*write data*/
-//¼g¥XRGBªº­È
+//å¯«å‡ºRGBçš„å€¼
 void write_data(FILE *outfile, ImgRGB **RGB, int H, int W, int skip){
     printf("\nwrite data...\n");
     char skip_buf[3] = { 0, 0, 0 };
@@ -631,8 +631,8 @@ void write_data(FILE *outfile, ImgRGB **RGB, int H, int W, int skip){
     printf("finish");
 }
 
-/*¦â«×Âà´«YCbCr*/
-//Y¬O«G«× Cb,Cr¬O¦â«×
+/*è‰²åº¦è½‰æ›YCbCr*/
+//Yæ˜¯äº®åº¦ Cb,Cræ˜¯è‰²åº¦
 void YCbCr(ImgRGB **data_RGB, ImgYCbCr **data_YCbCr, int H, int W){
     printf("\nYCbCr...\n");
 	for(i=0;i<H;i++){
@@ -657,7 +657,7 @@ void YCbCr(ImgRGB **data_RGB, ImgYCbCr **data_YCbCr, int H, int W){
     }
 }
 
-/*¤Ï¦â«×Âà´«YCbCr*/
+/*åè‰²åº¦è½‰æ›YCbCr*/
 void IYCbCr(ImgRGB **data_RGB, ImgYCbCr **data_YCbCr, int H, int W){
     printf("\nIYCbCr...\n");
 	for(i=0;i<H;i++){
@@ -667,7 +667,7 @@ void IYCbCr(ImgRGB **data_RGB, ImgYCbCr **data_YCbCr, int H, int W){
 					data_RGB[i*8+k][j*8+l].R=round(data_YCbCr[i][j].Y[k][l] + 1.402*data_YCbCr[i][j].Cr[k][l]);
         			data_RGB[i*8+k][j*8+l].G=round(data_YCbCr[i][j].Y[k][l] - 0.344*data_YCbCr[i][j].Cb[k][l] - 0.714*data_YCbCr[i][j].Cr[k][l]);
         			data_RGB[i*8+k][j*8+l].B=round(data_YCbCr[i][j].Y[k][l] + 1.772*data_YCbCr[i][j].Cb[k][l]);
-        			//­­¨îRGBªº­È¦b0~255
+        			//é™åˆ¶RGBçš„å€¼åœ¨0~255
         			if(data_RGB[8*i+k][8*j+l].R > 255) data_RGB[8*i+k][8*j+l].R = 255;
         			if(data_RGB[8*i+k][8*j+l].G > 255) data_RGB[8*i+k][8*j+l].G = 255;
         			if(data_RGB[8*i+k][8*j+l].B > 255) data_RGB[8*i+k][8*j+l].B = 255;
@@ -682,7 +682,7 @@ void IYCbCr(ImgRGB **data_RGB, ImgYCbCr **data_YCbCr, int H, int W){
 }
 
 /*DCT*/
-//­Èªº½d³ò­n¦b-128~127,©Ò¥H­n¥ı-128
+//å€¼çš„ç¯„åœè¦åœ¨-128~127,æ‰€ä»¥è¦å…ˆ-128
 void DCT(ImgYCbCr **data_YCbCr, ImgDCT **data_DCT, int H, int W){
     printf("\nDCT...\n");
     float cos1=0, cos2=0;
@@ -794,7 +794,7 @@ void IDCT(ImgYCbCr **data_YCbCr, ImgDCT **data_DCT, int H, int W){
                             }
                         }
                     }
-                    //­n§â128¥[¦^¨Ó
+                    //è¦æŠŠ128åŠ å›ä¾†
                     data_YCbCr[i][j].Y[r][c]=sum_Y/4+128;
                     data_YCbCr[i][j].Cb[r][c]=sum_Cb/4+128;
                     data_YCbCr[i][j].Cr[r][c]=sum_Cr/4+128;
@@ -813,8 +813,8 @@ void IDCT(ImgYCbCr **data_YCbCr, ImgDCT **data_DCT, int H, int W){
     }
 }
 
-/*¶q¤Æ*/
-//DCTªº­È°£¥H¶q¤Æªí
+/*é‡åŒ–*/
+//DCTçš„å€¼é™¤ä»¥é‡åŒ–è¡¨
 void QUAN(ImgQUAN **data_QUAN, ImgDCT ** data_DCT, int H, int W){
     printf("\nQUAN...\n");
     for(i=0;i<H;i++){
@@ -839,7 +839,7 @@ void QUAN(ImgQUAN **data_QUAN, ImgDCT ** data_DCT, int H, int W){
     }
 }
 
-/*¤Ï¶q¤Æ*/
+/*åé‡åŒ–*/
 void IQUAN(ImgQUAN **data_QUAN, ImgDCT ** data_DCT, int H, int W){
     printf("\nIQUAN...\n");
     for(i=0;i<H;i++){
@@ -927,7 +927,7 @@ void DPCM(ImgQUAN **data_QUAN, int H, int W){
         printf("\n");
     }
 
-    //¥ı°µ²Ä¤@¦æ¥H¥~ªº
+    //å…ˆåšç¬¬ä¸€è¡Œä»¥å¤–çš„
     for(i=0;i<H;i++){
         for(j=W;j>0;j--){
             data_QUAN[i][j].Y[0][0]=data_QUAN[i][j].Y[0][0]-data_QUAN[i][j-1].Y[0][0];
@@ -935,7 +935,7 @@ void DPCM(ImgQUAN **data_QUAN, int H, int W){
             data_QUAN[i][j].Cr[0][0]=data_QUAN[i][j].Cr[0][0]-data_QUAN[i][j-1].Cr[0][0];
         }
     }
-    //²Ä¤@¦æªº¥t¥~°µ ­n¦©±¼¤W¤@¦æªº
+    //ç¬¬ä¸€è¡Œçš„å¦å¤–åš è¦æ‰£æ‰ä¸Šä¸€è¡Œçš„
     for(i=H-1;i>0;i--){
         data_QUAN[i][0].Y[0][0]=data_QUAN[i][0].Y[0][0]-data_QUAN[i-1][W-1].Y[0][0];
         data_QUAN[i][0].Cb[0][0]=data_QUAN[i][0].Cb[0][0]-data_QUAN[i-1][W-1].Cb[0][0];
@@ -991,7 +991,7 @@ void RLE(ImgRLE **data_RLE, ImgZigZag ** data_ZigZag, int H, int W){
     int n1,n2,n3;
     for(i=0;i<H;i++){
         for(j=0;j<W;j++){
-            Y_zero = 0;//­pºâ³sÄò´X­Ó0
+            Y_zero = 0;//è¨ˆç®—é€£çºŒå¹¾å€‹0
             Cb_zero = 0;
             Cr_zero = 0;
             n1=1;
@@ -999,14 +999,14 @@ void RLE(ImgRLE **data_RLE, ImgZigZag ** data_ZigZag, int H, int W){
             n3=1;
             for(k=1;k<64;k++){
                 //Y
-                //­È¤£¬°0®É
+                //å€¼ä¸ç‚º0æ™‚
                 if((data_ZigZag[i][j].Y[k])!=0){
                     data_RLE[i][j].Y_value[n1]=data_ZigZag[i][j].Y[k];
                     data_RLE[i][j].Y_zero_num[n1]=Y_zero;
                     Y_zero=0;
                     n1++;
                 }
-                //­È¬°0®ÉY_zero+1¡A­pºâ³sÄò¦h¤Ö­Ó0
+                //å€¼ç‚º0æ™‚Y_zero+1ï¼Œè¨ˆç®—é€£çºŒå¤šå°‘å€‹0
                 else{ //data_ZigZag[i][j].Y[k]==0
                     Y_zero++;
                 }
@@ -1033,7 +1033,7 @@ void RLE(ImgRLE **data_RLE, ImgZigZag ** data_ZigZag, int H, int W){
                     Cr_zero++;
                 }
             }
-            //³Ì«á³£¬O0¼g(0,0)
+            //æœ€å¾Œéƒ½æ˜¯0å¯«(0,0)
             data_RLE[i][j].Y_value[n1]=0;
             data_RLE[i][j].Y_zero_num[n1]=0;
             data_RLE[i][j].Cb_value[n2]=0;
@@ -1052,14 +1052,14 @@ void RLE(ImgRLE **data_RLE, ImgZigZag ** data_ZigZag, int H, int W){
 
 //middle product
 void middle_product(ImgRLE **data_RLE, ImgQUAN ** data_QUAN, int H, int W){
-    //¼g¥XÀ£ÁY«áªº¤j¤p
+    //å¯«å‡ºå£“ç¸®å¾Œçš„å¤§å°
     FILE *fp_RLE_txt = fopen("RLE.txt","wb");
     for(i=0;i<H;i++){
         for(j=0;j<W;j++){
-            fprintf(fp_RLE_txt,"%d",data_QUAN[i][j].Y[0][0]);//¥ı¼gDPCMªºDC
+            fprintf(fp_RLE_txt,"%d",data_QUAN[i][j].Y[0][0]);//å…ˆå¯«DPCMçš„DC
             for(k=1;k<64;k++){
-                fprintf(fp_RLE_txt,"(%d,%d)",data_RLE[i][j].Y_zero_num[k], data_RLE[i][j].Y_value[k]);//¦A¼gRLEªºAC
-                if(data_RLE[i][j].Y_value[k]==0) break;//·|¼g(0,0)«á¸õ¨ì¤U¤@­Óblock
+                fprintf(fp_RLE_txt,"(%d,%d)",data_RLE[i][j].Y_zero_num[k], data_RLE[i][j].Y_value[k]);//å†å¯«RLEçš„AC
+                if(data_RLE[i][j].Y_value[k]==0) break;//æœƒå¯«(0,0)å¾Œè·³åˆ°ä¸‹ä¸€å€‹block
             }
         }
     }
@@ -1103,7 +1103,7 @@ void IRLE(ImgRLE **data_RLE, ImgZigZag ** data_ZigZag, int H, int W){
                 for(l=1;l<64;l++){
                     //Y
                     if(n1<64){
-                        if(data_RLE[i][j].Y_zero_num[l]!=0){ //¸É¤W³QÀ£ÁYªº0
+                        if(data_RLE[i][j].Y_zero_num[l]!=0){ //è£œä¸Šè¢«å£“ç¸®çš„0
                         for(m=0;m<data_RLE[i][j].Y_zero_num[l];m++){
                             data_ZigZag[i][j].Y[n1]=0;
                             n1++;
@@ -1160,33 +1160,33 @@ void IRLE(ImgRLE **data_RLE, ImgZigZag ** data_ZigZag, int H, int W){
 // Category          DC/AC value
 // -----------------------------------------
 // 0 					   0
-// 1 		  		   ¡V1 , 1
-// 2 				 3,¡V2 , 2,3
-// 3 			  ¡V7..¡V4 , 4..7
-// 4		 	 ¡V15..¡V8 , 8..15
-// 5 			¡V31..¡V16 , 16..31
-// 6 			¡V63..¡V32 , 32..63
-// 7 		   ¡V127..¡V64 , 64..127
-// 8 		  ¡V255..¡V128 , 128..255
-// 9 		  ¡V511..¡V256 , 256..511
-// 10 		 ¡V1023..¡V512 , 512..1023
-// 11 		¡V2047..¡V1024 , 1024..2047
+// 1 		  		   â€“1 , 1
+// 2 				 3,â€“2 , 2,3
+// 3 			  â€“7..â€“4 , 4..7
+// 4		 	 â€“15..â€“8 , 8..15
+// 5 			â€“31..â€“16 , 16..31
+// 6 			â€“63..â€“32 , 32..63
+// 7 		   â€“127..â€“64 , 64..127
+// 8 		  â€“255..â€“128 , 128..255
+// 9 		  â€“511..â€“256 , 256..511
+// 10 		 â€“1023..â€“512 , 512..1023
+// 11 		â€“2047..â€“1024 , 1024..2047
 
 
 //category
 int get_category(int value){
-    //¥ı§â­ÈÂà¥¿
+    //å…ˆæŠŠå€¼è½‰æ­£
     int category;
     int a[20];
     if(value<0){
         value = -value;
     }
     int num;
-	for(num=0;value>0;num++){//Âà¦¨¤G¶i¦ì
+	for(num=0;value>0;num++){//è½‰æˆäºŒé€²ä½
 		a[num]=value%2;
 		value=value/2;
 	}
-    category=num;//i§Y¬Ocategoryªº¼Æ­È
+    category=num;//iå³æ˜¯categoryçš„æ•¸å€¼
     return category;
 }
 
@@ -1207,14 +1207,14 @@ void huffman(ImgRLE **data_RLE, ImgQUAN ** data_QUAN, int H, int W){
             //print Huffman code
             fprintf(fp_temp_txt,"%s",huffman_Y_DC[category].code_word_string);
 
-            //DC­ÈÂà¤G¶i¦ì«áprint------
+            //DCå€¼è½‰äºŒé€²ä½å¾Œprint------
             value = data_QUAN[i][j].Y[0][0];
 
             for(l=0;l<256;l++){
                 DC_string[256] = 0;
             }
 
-            if(value < 0){ //¦pªG­È¬O­tªº¡A¥ıÅÜ¦¨¥¿ªº¡A¦A§â0©M1¹ï½Õ(1010->0101)
+            if(value < 0){ //å¦‚æœå€¼æ˜¯è² çš„ï¼Œå…ˆè®Šæˆæ­£çš„ï¼Œå†æŠŠ0å’Œ1å°èª¿(1010->0101)
                 value = -value;
                 for(k=0;value>0;k++){
                     if(value%2==1){
@@ -1257,14 +1257,14 @@ void huffman(ImgRLE **data_RLE, ImgQUAN ** data_QUAN, int H, int W){
             //print Huffman code
             fprintf(fp_temp_txt,"%s",huffman_C_DC[category].code_word_string);
 
-            //DC­ÈÂà¤G¶i¦ì«áprint------
+            //DCå€¼è½‰äºŒé€²ä½å¾Œprint------
             value = data_QUAN[i][j].Cb[0][0];
 
             for(l=0;l<256;l++){
                 DC_string[256] = 0;
             }
 
-            if(value < 0){ //¦pªG­È¬O­tªº¡A¥ıÅÜ¦¨¥¿ªº¡A¦A§â0©M1¹ï½Õ(1010->0101)
+            if(value < 0){ //å¦‚æœå€¼æ˜¯è² çš„ï¼Œå…ˆè®Šæˆæ­£çš„ï¼Œå†æŠŠ0å’Œ1å°èª¿(1010->0101)
                 value = -value;
                 for(k=0;value>0;k++){
                     if(value%2==1){
@@ -1308,14 +1308,14 @@ void huffman(ImgRLE **data_RLE, ImgQUAN ** data_QUAN, int H, int W){
             //print Huffman code
             fprintf(fp_temp_txt,"%s",huffman_C_DC[category].code_word_string);
 
-            //DC­ÈÂà¤G¶i¦ì«áprint------
+            //DCå€¼è½‰äºŒé€²ä½å¾Œprint------
             value = data_QUAN[i][j].Cr[0][0];
 
             for(l=0;l<256;l++){
                 DC_string[256] = 0;
             }
 
-            if(value < 0){ //¦pªG­È¬O­tªº¡A¥ıÅÜ¦¨¥¿ªº¡A¦A§â0©M1¹ï½Õ(1010->0101)
+            if(value < 0){ //å¦‚æœå€¼æ˜¯è² çš„ï¼Œå…ˆè®Šæˆæ­£çš„ï¼Œå†æŠŠ0å’Œ1å°èª¿(1010->0101)
                 value = -value;
                 for(k=0;value>0;k++){
                     if(value%2==1){
@@ -1374,7 +1374,7 @@ int main(int argc, char **argv){
 	Bitmap bmpheader;
 	read_header(fp_in, &bmpheader);
 
-	//¨ú¥Xwidth©Mheight
+	//å–å‡ºwidthå’Œheight
 	int H = bmpheader.height;
 	int W = bmpheader.width;
 
@@ -1405,7 +1405,7 @@ int main(int argc, char **argv){
 	read_data(fp_in, data_RGB, H, W, skip);
 	fclose(fp_in);
 
-	//¼g¥X­ì©l¤j¤p
+	//å¯«å‡ºåŸå§‹å¤§å°
 	FILE *fp_RGB_txt = fopen("RGB.txt","wb");
     for(i=0;i<H;i++){
         for(j=0;j<W;j++){
@@ -1416,13 +1416,13 @@ int main(int argc, char **argv){
     }
     fclose(fp_RGB_txt);
 
-/*¦â«×Âà´«*/
+/*è‰²åº¦è½‰æ›*/
     YCbCr(data_RGB, data_YCbCr, H/8, W/8);
 
 /*DCT*/
     DCT(data_YCbCr, data_DCT, H/8, W/8);
 
-/*¶q¤Æ*/
+/*é‡åŒ–*/
     QUAN(data_QUAN, data_DCT, H/8, W/8);
 
 /*ZigZag*/
@@ -1451,13 +1451,13 @@ int main(int argc, char **argv){
 /*IZigZag*/
     IZigZag(data_ZigZag, data_QUAN, H/8, W/8);
 
-/*¤Ï¶q¤Æ*/
+/*åé‡åŒ–*/
     IQUAN(data_QUAN, data_DCT, H/8, W/8);
 
 /*IDCT*/
     IDCT(data_YCbCr, data_DCT, H/8, W/8);
 
-/*¤Ï¦â«×Âà´«*/
+/*åè‰²åº¦è½‰æ›*/
     IYCbCr(data_RGB, data_YCbCr, H/8, W/8);
 
 /*write*/
