@@ -1,5 +1,5 @@
 # JPEG Compression
-Use C to implement JPEG compression.
+JPEG compression by C without any toolbox.
 
 
 ## Block diagram
